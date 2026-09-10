@@ -1,6 +1,6 @@
 import { CartesianGrid, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis } from 'recharts';
 
-const ScatterPlot = ({ data, streams, title = 'Scatter Plot' }) => {
+const ScatterPlot = ({ data, streams }) => {
   const [xStream, yStream] = streams;
   const scatterData = data
     .map((entry) => ({ x: Number(entry[xStream]), y: Number(entry[yStream]) }))
@@ -8,7 +8,6 @@ const ScatterPlot = ({ data, streams, title = 'Scatter Plot' }) => {
 
   return (
     <div className="scatter-card">
-      <h4 className="scatter-title">{title}</h4>
       <div className="scatter-chart" role="img" aria-label={`${yStream} compared with ${xStream} scatter plot`}>
         <ResponsiveContainer width="100%" height="100%">
           <ScatterChart margin={{ top: 16, right: 14, bottom: 20, left: 4 }}>
