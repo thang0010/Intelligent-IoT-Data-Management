@@ -73,15 +73,18 @@ const CorrelationAnalysis = ({ data, selectedStreams }) => {
 
   return (
     <div className="correlation-content">
-      <div className="correlation-summary" aria-live="polite">
-        <span>Correlation Coefficient</span>
-        <strong>{result.correlation.toFixed(2)}</strong>
-        <p className={directionClass}>{relationship}</p>
-        {selectedStreams.length > 2 && (
-          <small>Strongest selected pair: {result.xStream} and {result.yStream}</small>
-        )}
+      <div className="correlation-plot-header">
+        <h4 className="scatter-title">Scatter Plot</h4>
+        <div className="correlation-summary" aria-live="polite">
+          <span>Correlation Coefficient</span>
+          <strong>{result.correlation.toFixed(2)}</strong>
+          <p className={directionClass}>{relationship}</p>
+          {selectedStreams.length > 2 && (
+            <small>Strongest selected pair: {result.xStream} and {result.yStream}</small>
+          )}
+        </div>
       </div>
-      <ScatterPlot data={result.pairedData} streams={[result.xStream, result.yStream]} title="Scatter Plot" />
+      <ScatterPlot data={result.pairedData} streams={[result.xStream, result.yStream]} />
     </div>
   );
 };
